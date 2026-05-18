@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProAct | 主动智能体研究与产品展示</title>
+    <meta
+      name="description"
+      content="ProAct 利用用户两次交互之间的空闲时间预测下一步需求，提前检索和验证证据，整理可审核材料，并在用户确认边界内交付。"
+    >
+    <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">跳到主要内容</a>
+    <header class="site-header" aria-label="ProAct 页面导航">
+      <a class="site-logo" href="#top" aria-label="回到 ProAct 首页">ProAct</a>
+      <nav class="site-nav" aria-label="主导航">
+        <a href="#demo">Demo</a>
+        <a href="#value">价值</a>
+        <a href="#comparison">对比</a>
+        <a href="#mechanism">机制</a>
+        <a href="#safety">安全</a>
+        <a href="#evaluation">评测</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <button class="theme-toggle" type="button" aria-label="切换明暗主题" aria-pressed="false">
+        <span class="theme-toggle__mark" aria-hidden="true"></span>
+      </button>
+    </header>
+
+    <main id="main-content">
+      <section class="hero" id="top" aria-labelledby="hero-title">
+        <div class="hero__copy">
+          <p class="eyebrow">Proactive Agents · Idle-Time Preparation</p>
+          <h1 id="hero-title">ProAct</h1>
+          <p class="hero__tagline">把智能体的等待时间变成可验证的下一步准备</p>
+          <p class="hero__lead">
+            ProAct 在用户两次交互之间预测可能的后续需求，提前检索与验证证据，整理成可审核的草稿、清单或摘要；系统只在低风险、低打扰时交付给用户确认，不自动执行敏感操作。
+          </p>
+          <div class="hero__actions" aria-label="首屏行动按钮">
+            <a class="button button--primary" href="#demo">观看 4 个 Demo</a>
+            <a class="button" href="#safety">查看安全边界</a>
+            <a class="button button--ghost" href="#evaluation">了解评测设计</a>
+          </div>
+          <div class="proof-strip" aria-label="ProAct 证据摘要">
+            <article class="proof-item">
+              <strong>4 个原型流程 demo</strong>
+              <span>覆盖 finance、engineering、care、casework 四类场景。</span>
+            </article>
+            <article class="proof-item">
+              <strong>可审计行为链</strong>
+              <span>每个 demo 展示预测、检索、验证、整理、交付 trace。</span>
+            </article>
+            <article class="proof-item">
+              <strong>用户确认边界</strong>
+              <span>系统准备材料和建议；敏感操作不自动执行。</span>
+            </article>
+          </div>
+          <nav class="mobile-anchor-bar" aria-label="移动端快速导航">
+            <a href="#demo">Demo</a>
+            <a href="#mechanism">机制</a>
+            <a href="#safety">安全</a>
+            <a href="#evaluation">评测</a>
+          </nav>
+        </div>
+
+        <aside class="idle-trace" aria-label="空闲窗口示例 trace">
+          <div class="trace-window__top">
+            <p class="eyebrow">空闲窗口示例 trace（虚构）</p>
+            <span>queue</span>
+          </div>
+          <div class="trace-row">
+            <span class="trace-row__label">用户上下文</span>
+            <p>用户刚刚完成一轮项目复盘沟通，尚未继续追问汇报材料。</p>
+          </div>
+          <div class="trace-row">
+            <span class="trace-row__label">ProAct 预测</span>
+            <p>下一步可能需要管理层汇报大纲、风险摘要和会议 checklist。</p>
+          </div>
+          <div class="trace-row">
+            <span class="trace-row__label">空闲时间准备</span>
+            <p>检索相关记录，整理项目进展、风险与阻塞点、slides 草稿和证据来源。</p>
+          </div>
+          <div class="trace-row trace-row--decision">
+            <span class="trace-row__label">交付策略</span>
+            <p>草稿进入 queue，等用户继续讨论复盘时整合；高风险或需外发的操作必须等待确认。</p>
+          </div>
+        </aside>
+      </section>
+
+      <section class="section section--demo" id="demo" aria-labelledby="demo-title">
+        <div class="section__header">
+          <p class="eyebrow">Demo-first evidence</p>
+          <h2 id="demo-title">4 个原型流程 demo：从停顿到可确认材料</h2>
+          <p>
+            以下 demo 使用虚构人物、组织和合成事实表，不包含真实用户数据，也不代表线上生产系统效果。它们用于展示 ProAct 的目标行为链：在用户停顿或切换任务时预测下一步需求，提前补齐证据，整理可供用户确认的材料，并在用户确认边界内交付。
+          </p>
+        </div>
+
+        <div class="demo-grid">
+          <article class="demo-card" data-case="finance">
+            <div class="demo-card__header">
+              <div class="card-kicker">
+                <span>Finance</span>
+                <span>提前补齐规则</span>
+              </div>
+              <h3>Finance / First Paycheck</h3>
+              <p>用户询问第一笔工资如何分配，ProAct 提前准备 401k、HYSA 与 enrollment 下一步材料。</p>
+            </div>
+            <div class="video-shell">
+              <video controls preload="metadata" poster="assets/images/poster-case-finance.svg" aria-label="Finance first paycheck 原型流程视频">
+                <source src="assets/media/case-finance-401k.mp4" type="video/mp4">
+              </video>
+            </div>
+            <dl class="demo-facts">
+              <div>
+                <dt>用户上下文</dt>
+                <dd>23 岁新员工拿到第一笔工资，想判断 401k、HYSA 和低成本指数基金应该先看什么。</dd>
+              </div>
+              <div>
+                <dt>提前准备</dt>
+                <dd>整理雇主 match、开户门槛、贡献规则和 enrollment 下一步。</dd>
+              </div>
+              <div>
+                <dt>为什么有用</dt>
+                <dd>用户不必反复追问公司规则和开户条件，可以直接审核下一步选择。</dd>
+              </div>
+            </dl>
+            <ol class="behavior-chain" aria-label="Finance demo 行为链">
+              <li>预测</li>
+              <li>检索</li>
+              <li>验证</li>
+              <li>整理</li>
+              <li>确认</li>
+            </ol>
+          </article>
+
+          <article class="demo-card" data-case="engineering">
+            <div class="demo-card__header">
+              <div class="card-kicker">
+                <span>Engineering</span>
+                <span>还原变更链</span>
+              </div>
+              <h3>Release Hotfix Chain</h3>
+              <p>工程经理需要复盘连续 hotfix，ProAct 提前整理事故节点、commit、部署记录和版本覆盖关系。</p>
+            </div>
+            <div class="video-shell">
+              <video controls preload="metadata" poster="assets/images/poster-case-release.svg" aria-label="Release hotfix chain 原型流程视频">
+                <source src="assets/media/case-release-hotfix.mp4" type="video/mp4">
+              </video>
+            </div>
+            <dl class="demo-facts">
+              <div>
+                <dt>用户上下文</dt>
+                <dd>工程经理需要重建连续 hotfix 的生产变更链，确认哪些修复被覆盖、回滚或替代。</dd>
+              </div>
+              <div>
+                <dt>提前准备</dt>
+                <dd>关联事故节点、相关 commit、部署记录和被 supersede 的版本。</dd>
+              </div>
+              <div>
+                <dt>为什么有用</dt>
+                <dd>用户更快拿到可审计 release trace，而不是逐轮补问日志和版本关系。</dd>
+              </div>
+            </dl>
+            <ol class="behavior-chain" aria-label="Engineering demo 行为链">
+              <li>预测</li>
+              <li>检索</li>
+              <li>验证</li>
+              <li>整理</li>
+              <li>确认</li>
+            </ol>
+          </article>
+
+          <article class="demo-card" data-case="care">
+            <div class="demo-card__header">
+              <div class="card-kicker">
+                <span>Care</span>
+                <span>同步材料</span>
+              </div>
+              <h3>Care Coordination Logistics</h3>
+              <p>家长需要同步学校、课后班和儿科医生的信息，ProAct 提前整理联系人、材料和确认记录。</p>
+            </div>
+            <div class="video-shell">
+              <video controls preload="metadata" poster="assets/images/poster-case-care.svg" aria-label="Care coordination logistics 原型流程视频">
+                <source src="assets/media/case-care-coordination.mp4" type="video/mp4">
+              </video>
+            </div>
+            <dl class="demo-facts">
+              <div>
+                <dt>用户上下文</dt>
+                <dd>家长需要协调学校、课后班和儿科医生之间的信息一致性，重点是材料同步。</dd>
+              </div>
+              <div>
+                <dt>提前准备</dt>
+                <dd>整理联系人、材料位置、触发因素、确认记录和下一封同步邮件草稿。</dd>
+              </div>
+              <div>
+                <dt>为什么有用</dt>
+                <dd>系统帮助准备沟通材料，但不替用户做医疗判断或自动发送信息。</dd>
+              </div>
+            </dl>
+            <ol class="behavior-chain" aria-label="Care demo 行为链">
+              <li>预测</li>
+              <li>检索</li>
+              <li>验证</li>
+              <li>整理</li>
+              <li>确认</li>
+            </ol>
+          </article>
+
+          <article class="demo-card" data-case="casework">
+            <div class="demo-card__header">
+              <div class="card-kicker">
+                <span>Casework</span>
+                <span>整理 intake</span>
+              </div>
+              <h3>Case Intake Summary</h3>
+              <p>Caseworker 需要把首次长对话整理成后续可用的 intake summary，ProAct 提前识别信息缺口和下一步优先级。</p>
+            </div>
+            <div class="video-shell">
+              <video controls preload="metadata" poster="assets/images/poster-case-intake.svg" aria-label="Case intake summary 原型流程视频">
+                <source src="assets/media/case-intake-summary.mp4" type="video/mp4">
+              </video>
+            </div>
+            <dl class="demo-facts">
+              <div>
+                <dt>用户上下文</dt>
+                <dd>Caseworker 需要从首次长对话里整理住房、就业、健康授权和联系人信息。</dd>
+              </div>
+              <div>
+                <dt>提前准备</dt>
+                <dd>识别后续需要确认的资格、就业状态、健康记录授权和下一次联系优先级。</dd>
+              </div>
+              <div>
+                <dt>为什么有用</dt>
+                <dd>用户可以审核结构化记录，而不是从长对话里手动提取下一步。</dd>
+              </div>
+            </dl>
+            <ol class="behavior-chain" aria-label="Casework demo 行为链">
+              <li>预测</li>
+              <li>检索</li>
+              <li>验证</li>
+              <li>整理</li>
+              <li>确认</li>
+            </ol>
+          </article>
+        </div>
+      </section>
+
+      <section class="section section--soft" id="value" aria-labelledby="value-title">
+        <div class="section__header">
+          <p class="eyebrow">Value shift</p>
+          <h2 id="value-title">从“回答这一句”升级为“准备下一步”</h2>
+        </div>
+        <div class="value-grid">
+          <article class="value-card">
+            <h3>减少追问</h3>
+            <p>把可预测的后续问题提前覆盖，用户不必一轮轮补问规则、材料清单、变更链或联系人信息。</p>
+          </article>
+          <article class="value-card">
+            <h3>减少切换上下文</h3>
+            <p>空闲时间用于检索、验证和整理来源，用户回来时看到的是可审核材料，而不是新的搜索任务。</p>
+          </article>
+          <article class="value-card">
+            <h3>保持可控</h3>
+            <p>主动交付限定在摘要、草稿、清单和候选证据；关键决定仍由用户确认。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="comparison" aria-labelledby="comparison-title">
+        <div class="section__header">
+          <p class="eyebrow">Capability comparison</p>
+          <h2 id="comparison-title">三类助手的行为差异</h2>
+        </div>
+        <div class="comparison-grid">
+          <article class="comparison-card">
+            <h3>Reactive Assistant</h3>
+            <p>用户问一句，系统答一句。它擅长响应当前问题，但通常不会利用等待时间准备下一步。</p>
+            <span>触发方式：用户显式提问</span>
+          </article>
+          <article class="comparison-card">
+            <h3>Memory Agent</h3>
+            <p>能记住长期偏好、事实和历史摘要，但多数情况下仍等待用户触发后再组织回答。</p>
+            <span>触发方式：记忆增强的被动响应</span>
+          </article>
+          <article class="comparison-card comparison-card--highlight">
+            <h3>ProAct</h3>
+            <p>在空闲时间预测下一步需求，提前准备证据和草稿，并在确认边界内交付。</p>
+            <span>触发方式：空闲窗口中的受控准备</span>
+          </article>
+        </div>
+      </section>
+
+      <section class="section section--dark" id="mechanism" aria-labelledby="mechanism-title">
+        <div class="section__header">
+          <p class="eyebrow">Mechanism</p>
+          <h2 id="mechanism-title">五步 pipeline：让空闲时间服务于可验证准备</h2>
+          <p>机制区采用五步卡片来解释 ProAct 如何工作。大型架构图不再作为主要阅读路径，核心是从记忆、预测、价值风险评估到空闲检索和效用感知交付。</p>
+        </div>
+        <div class="pipeline-grid">
+          <article class="pipeline-card">
+            <span>01</span>
+            <h3>长期记忆 <small>Persistent Memory</small></h3>
+            <p>持续维护用户偏好、任务上下文、历史事实和约束，作为主动准备的边界。</p>
+          </article>
+          <article class="pipeline-card">
+            <span>02</span>
+            <h3>后续需求预测 <small>Future-State Prediction</small></h3>
+            <p>在用户停顿、切换任务或上下文累积后，预测用户可能的下一步需求。</p>
+          </article>
+          <article class="pipeline-card">
+            <span>03</span>
+            <h3>价值与风险评估 <small>Value Evaluation</small></h3>
+            <p>判断提前准备是否值得做，并检查打扰、隐私、幻觉或越权风险。</p>
+          </article>
+          <article class="pipeline-card">
+            <span>04</span>
+            <h3>空闲时检索与验证 <small>Idle-Time Acquisition</small></h3>
+            <p>利用空闲时间检索证据、补齐事实、对齐来源，而不是等待用户明确追问。</p>
+          </article>
+          <article class="pipeline-card">
+            <span>05</span>
+            <h3>效用感知交付 <small>Utility-Aware Delivery</small></h3>
+            <p>根据价值和风险选择 push、queue 或 drop。高风险操作必须等待用户确认。</p>
+          </article>
+        </div>
+        <div class="delivery-band" aria-label="交付策略">
+          <div>
+            <strong>Push</strong>
+            <p>低风险、低打扰、及时有用的信息可以主动提示。</p>
+          </div>
+          <div>
+            <strong>Queue</strong>
+            <p>需要上下文或确认的内容排队等待合适时机。</p>
+          </div>
+          <div>
+            <strong>Drop</strong>
+            <p>低价值、高风险或证据不足的内容不交付。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="safety" aria-labelledby="safety-title">
+        <div class="section__header">
+          <p class="eyebrow">Safety boundary</p>
+          <h2 id="safety-title">主动交付不等于自动执行</h2>
+          <p>安全边界必须早于产品想象：ProAct 可以准备材料和建议，但不能越过用户确认权。</p>
+        </div>
+        <div class="safety-grid">
+          <article class="safety-card">
+            <h3>可以准备</h3>
+            <p>摘要、草稿、清单、候选证据、对话 trace 和待确认问题。</p>
+          </article>
+          <article class="safety-card">
+            <h3>不能自动执行</h3>
+            <p>不自动外发消息、提交表单、变更账户、修改生产系统，或处理医疗、福利、金融敏感动作。</p>
+          </article>
+          <article class="safety-card">
+            <h3>高风险进入 Queue</h3>
+            <p>涉及外发、账户、福利、医疗、生产变更等动作时，内容只能排队等待用户显式确认。</p>
+          </article>
+          <article class="safety-card">
+            <h3>证据不足则 Drop</h3>
+            <p>低价值、高风险或无法回溯来源的主动内容不应交付，避免把主动性变成打扰或 unsupported claims。</p>
+          </article>
+        </div>
+        <p class="safety-note">页面中的所有 demo 均为虚构场景，不包含真实用户数据。</p>
+      </section>
+
+      <section class="section section--soft" id="evaluation" aria-labelledby="evaluation-title">
+        <div class="section__header">
+          <p class="eyebrow">ProActEval design</p>
+          <h2 id="evaluation-title">如何评测主动智能体是否真的有用？</h2>
+          <p>
+            评测区定位为评测设计，而不是实验结果。ProActEval 用闭世界虚构场景、合成事实表和隐藏标注，观察系统是否能在用户明确追问前准备可验证材料，同时避免 unsupported claims 和越权动作。
+          </p>
+        </div>
+        <div class="evaluation-grid">
+          <article>
+            <h3>闭世界虚构场景</h3>
+            <p>避免真实隐私和不可控外部事实，让每个场景的来源、约束和正确性边界都能被审计。</p>
+          </article>
+          <article>
+            <h3>合成事实表</h3>
+            <p>每个场景有可验证来源，系统准备的内容必须能回溯到事实表或可检查材料。</p>
+          </article>
+          <article>
+            <h3>隐藏标注</h3>
+            <p>评估端记录合理后续需求，系统运行时看不到这些标注，避免自说自话。</p>
+          </article>
+          <article>
+            <h3>证据约束</h3>
+            <p>准备内容要说明来源和不确定性，不允许把缺失事实包装成确定结论。</p>
+          </article>
+          <article>
+            <h3>安全约束</h3>
+            <p>系统不能越权执行敏感操作；高风险内容应进入 queue，而不是被自动完成。</p>
+          </article>
+          <article>
+            <h3>打扰成本</h3>
+            <p>不是越主动越好。低价值主动提示应被惩罚，低风险且及时有用的提示才适合 push。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="faq" aria-labelledby="faq-title">
+        <div class="section__header">
+          <p class="eyebrow">FAQ</p>
+          <h2 id="faq-title">常见问题</h2>
+        </div>
+        <div class="faq-list">
+          <details open>
+            <summary>ProAct 会不会一直打扰用户？</summary>
+            <p>不会。系统会在 push、queue、drop 之间选择，只有预期收益高、打扰成本低且事实风险可控时才主动提示。</p>
+          </details>
+          <details>
+            <summary>ProAct 会自动替用户执行操作吗？</summary>
+            <p>不会。ProAct 只准备材料、草稿、清单和下一步建议，不自动发送邮件、提交表单、修改账户或执行敏感操作。</p>
+          </details>
+          <details>
+            <summary>Demo 用的是真实用户数据吗？</summary>
+            <p>不是。页面 demo 使用虚构人物、组织和合成事实表，不包含真实用户数据，也不代表线上生产系统效果。</p>
+          </details>
+          <details>
+            <summary>为什么不展示实验结果数字？</summary>
+            <p>当前页面只展示 demo、系统机制、安全边界和评测设计。没有完整实验报告、baseline、数据集定义和复现说明支撑的数字不会作为真实结果展示。</p>
+          </details>
+          <details>
+            <summary>研究者和合作者应该先看哪里？</summary>
+            <p>先看 4 个 demo 理解行为链，再看机制、安全边界和评测设计。</p>
+          </details>
+        </div>
+      </section>
+
+      <section class="section section--cta" id="cta" aria-labelledby="cta-title">
+        <div>
+          <p class="eyebrow">Next step</p>
+          <h2 id="cta-title">从 demo 看见主动智能体的可控边界</h2>
+          <p>观看原型流程，理解 ProAct 如何预测、检索、验证、整理，并在用户确认边界内交付下一步材料。</p>
+        </div>
+        <div class="cta-actions">
+          <a class="button button--primary" href="#demo">观看 Demo</a>
+          <a class="button" href="#mechanism">查看机制</a>
+          <a class="button button--ghost" href="#evaluation">了解评测设计</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>© 2026 ProAct showcase · 虚构 demo 与评测设计展示</p>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
