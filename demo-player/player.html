@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" data-mode="video">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ProAct Demo Player</title>
+  <link rel="stylesheet" href="video-styles.css">
+  <style>
+    html, body { margin: 0; padding: 0; overflow: hidden; width: 100%; height: 100%; }
+  </style>
+</head>
+<body>
+  <section class="video-root" data-video-root aria-label="ProAct Video Demo">
+
+    <div class="v-title-card" data-v-title-card>
+      <h1 data-v-title-heading></h1>
+      <p data-v-title-sub></p>
+    </div>
+
+    <header class="v-topbar" data-v-topbar>
+      <span class="v-topbar__case" data-v-case data-video-domain></span>
+      <span class="v-topbar__timer" data-v-timer>0:00 / 1:06</span>
+    </header>
+
+    <div class="v-stage" data-v-stage>
+      <div class="v-chat" data-v-chat>
+        <div class="v-chat__inner" data-v-chat-inner>
+          <div class="v-typing" data-v-typing>
+            <span class="v-typing__dot"></span>
+            <span class="v-typing__dot"></span>
+            <span class="v-typing__dot"></span>
+          </div>
+          <div class="v-idle-divider" data-v-idle-divider>
+            <span class="v-idle-divider__line"></span>
+            <span class="v-idle-divider__label" data-v-idle-label></span>
+            <span class="v-idle-divider__line"></span>
+          </div>
+        </div>
+
+        <div class="v-artifact" data-v-artifact>
+          <p class="v-artifact__kicker" data-v-artifact-kicker></p>
+          <h3 class="v-artifact__title" data-v-artifact-title></h3>
+          <p class="v-artifact__subtitle" data-v-artifact-subtitle></p>
+          <div class="v-artifact__body" data-v-artifact-body></div>
+          <p class="v-artifact__footer" data-v-artifact-footer></p>
+        </div>
+
+        <div class="v-cta" data-v-cta></div>
+      </div>
+
+      <aside class="v-inspector" data-v-inspector>
+        <div class="v-inspector__inner">
+          <div class="v-inspector__header">
+            <span class="v-inspector__dot"></span>
+            <span class="v-inspector__label" data-v-inspector-label></span>
+          </div>
+          <div class="v-inspector__body" data-v-inspector-body></div>
+        </div>
+      </aside>
+    </div>
+
+    <nav class="v-timeline" data-v-timeline aria-label="Demo phase timeline"></nav>
+
+    <div class="v-recap" data-v-recap>
+      <div class="v-recap__lines" data-v-recap-lines></div>
+    </div>
+  </section>
+
+  <script src="video-renderer.js"></script>
+</body>
+</html>

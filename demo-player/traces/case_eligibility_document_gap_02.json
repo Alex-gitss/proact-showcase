@@ -1,0 +1,603 @@
+{
+  "schemaVersion": 1,
+  "caseId": "case_eligibility_document_gap_02",
+  "domain": "Nonprofit Case Management",
+  "title": "Document Gap Checklist Push",
+  "subtitle": "Application checklist, evidence table, user-controlled push",
+  "durationLabel": "66s video pass",
+  "chat": [
+    {
+      "role": "user",
+      "text": "I need to understand why case HA-88201 is stalled and whether the missing, expired, or inconsistent documents can be cleared together."
+    },
+    {
+      "role": "assistant",
+      "text": "Case HA-88201 is stalled awaiting documents. The main blockers are a missing pay stub, an expired pay stub, missing dependent records, and a name mismatch that needs Form 11-B."
+    },
+    {
+      "role": "user",
+      "text": "I will compare the portal record for a minute. If a clean follow-up checklist would help, prepare it."
+    }
+  ],
+  "idleWindow": {
+    "trigger": "User paused to review the HA-88201 document verification record",
+    "durationLabel": "20s quiet window",
+    "observedContext": "The conversation centered on a stalled housing application, missing documents, expired income proof, name mismatch, and closure deadline."
+  },
+  "predictedNeed": {
+    "title": "User likely needs a document gap checklist next",
+    "summary": "The next useful artifact is a compact checklist that groups missing, expired, inconsistent, and deadline items without contacting the client or editing the case portal.",
+    "confidenceLabel": "prototype-high"
+  },
+  "stages": [
+    {
+      "kind": "idle_trigger",
+      "title": "Idle window begins",
+      "summary": "The user pauses to inspect the case record; ProAct stays read-only and prepares context.",
+      "durationMs": 5000
+    },
+    {
+      "kind": "predict_need",
+      "title": "Predict checklist artifact",
+      "summary": "The system predicts that a follow-up checklist will be more useful than another long answer.",
+      "durationMs": 8000
+    },
+    {
+      "kind": "gather_evidence",
+      "title": "Gather read-only evidence",
+      "summary": "Only synthetic fact-sheet entries are selected for case status, missing documents, expired proof, name mismatch, and deadline.",
+      "durationMs": 9000
+    },
+    {
+      "kind": "compose_artifact",
+      "title": "Prepare checklist and table",
+      "summary": "Evidence is organized into an application document gap checklist plus a compact follow-up table.",
+      "durationMs": 10000
+    },
+    {
+      "kind": "deliver_decision",
+      "title": "Push delivery",
+      "summary": "Because this is a read-only internal draft, the prepared artifact is pushed for user control.",
+      "durationMs": 8500
+    }
+  ],
+  "selectedFacts": [
+    {
+      "factId": "GAP-F01",
+      "sourceType": "fact_sheet",
+      "sourceFactIds": [
+        "F01",
+        "F09"
+      ],
+      "sourceCategories": [
+        "case_details",
+        "application_status"
+      ],
+      "label": "case status",
+      "displayText": "Case HA-88201 is marked Stalled - Awaiting Documents.",
+      "relevance": "Supports the case and status summary."
+    },
+    {
+      "factId": "GAP-F02",
+      "sourceType": "fact_sheet",
+      "sourceFactIds": [
+        "F02"
+      ],
+      "sourceCategories": [
+        "case_details"
+      ],
+      "label": "program",
+      "displayText": "The application is for the Rapid Rehousing Assistance Program offered by Hopewell Community Alliance.",
+      "relevance": "Supports program-specific document framing."
+    },
+    {
+      "factId": "GAP-F03",
+      "sourceType": "fact_sheet",
+      "sourceFactIds": [
+        "F17",
+        "F18",
+        "F19"
+      ],
+      "sourceCategories": [
+        "document_status"
+      ],
+      "label": "missing documents",
+      "displayText": "Missing items include the second required proof of income, a landlord reference letter, and Carlos Reyes's birth certificate.",
+      "relevance": "Supports the missing document rows."
+    },
+    {
+      "factId": "GAP-F04",
+      "sourceType": "fact_sheet",
+      "sourceFactIds": [
+        "F15",
+        "F23",
+        "F28"
+      ],
+      "sourceCategories": [
+        "document_status",
+        "procedural_rules"
+      ],
+      "label": "expired pay stub",
+      "displayText": "A Global Logistics Inc. pay stub dated September 1, 2023 is expired; pay stubs must be within the last 60 days.",
+      "relevance": "Supports the expired income proof row."
+    },
+    {
+      "factId": "GAP-F05",
+      "sourceType": "fact_sheet",
+      "sourceFactIds": [
+        "F16",
+        "F27"
+      ],
+      "sourceCategories": [
+        "document_status",
+        "procedural_rules"
+      ],
+      "label": "name mismatch",
+      "displayText": "A First National Bank statement shows Javier Rey, and the mismatch requires a signed Name Affidavit Form 11-B.",
+      "relevance": "Supports the inconsistent document row."
+    },
+    {
+      "factId": "GAP-F06",
+      "sourceType": "fact_sheet",
+      "sourceFactIds": [
+        "F29",
+        "F30"
+      ],
+      "sourceCategories": [
+        "procedural_rules"
+      ],
+      "label": "closure deadline",
+      "displayText": "If all required documents are not received within 90 days, case HA-88201 closes automatically on January 13, 2024.",
+      "relevance": "Supports urgency and deadline framing."
+    },
+    {
+      "factId": "GAP-F07",
+      "sourceType": "fact_sheet",
+      "sourceFactIds": [
+        "F20",
+        "F22"
+      ],
+      "sourceCategories": [
+        "system_tools"
+      ],
+      "label": "portal location",
+      "displayText": "The document checklist is in AuraServe Case Portal under Docs, then Verification.",
+      "relevance": "Supports the safe next step without portal writes."
+    }
+  ],
+  "artifact": {
+    "title": "Application Document Gap Checklist",
+    "sections": [
+      {
+        "heading": "Brief summary",
+        "items": [
+          {
+            "text": "Case: HA-88201 is stalled awaiting documents.",
+            "evidenceRefs": [
+              "GAP-F01"
+            ]
+          },
+          {
+            "text": "Missing: second proof of income, landlord reference letter, and Carlos Reyes birth certificate.",
+            "evidenceRefs": [
+              "GAP-F03"
+            ]
+          },
+          {
+            "text": "Expired: Global Logistics Inc. pay stub dated September 1, 2023.",
+            "evidenceRefs": [
+              "GAP-F04"
+            ]
+          },
+          {
+            "text": "Inconsistent: bank statement name mismatch requires Name Affidavit Form 11-B.",
+            "evidenceRefs": [
+              "GAP-F05"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Prepared table",
+        "items": [
+          {
+            "text": "Case status, missing documents, expired proof, name mismatch, and deadline are ready as follow-up rows.",
+            "evidenceRefs": [
+              "GAP-F01",
+              "GAP-F03",
+              "GAP-F04",
+              "GAP-F05",
+              "GAP-F06"
+            ]
+          },
+          {
+            "text": "Contacting the client and updating the portal still require explicit user action.",
+            "uncertainty": "The artifact does not contact the client, submit documents, change portal status, or decide eligibility."
+          }
+        ]
+      }
+    ]
+  },
+  "deliveryDecision": {
+    "action": "push",
+    "reason": "The artifact is an internal casework checklist based on read-only evidence, with low interruption cost and no external side effect.",
+    "userConfirmationRequired": false,
+    "safeNextStep": "Show the checklist and let the user open it, copy the table, or copy follow-up items explicitly.",
+    "blockedActions": [
+      "No client contact",
+      "No application submission",
+      "No AuraServe portal writes",
+      "No eligibility decision",
+      "No document upload"
+    ],
+    "userVisibleItems": [
+      "Application Document Gap Checklist",
+      "Follow-up table",
+      "Open brief / Copy table / Copy follow-up list buttons"
+    ]
+  },
+  "safetyBoundary": {
+    "summary": "ProAct prepares a document gap checklist from read-only case evidence and leaves every follow-up action under user control.",
+    "blockedActions": [
+      "No client contact",
+      "No application submission",
+      "No AuraServe portal writes",
+      "No eligibility decision",
+      "No document upload"
+    ]
+  },
+  "redactionNotes": [
+    "Curated from a fictional nonprofit case-management scenario and synthetic fact-sheet entries.",
+    "Private operational metadata, internal prompts, unfiltered transcripts, and live endpoints are omitted.",
+    "The demo does not contact clients, submit applications, edit case tools, or use real casework data."
+  ],
+  "videoMode": {
+    "version": 4,
+    "totalDurationMs": 66000,
+    "phases": [
+      {
+        "id": "title_card",
+        "label": "Title",
+        "startMs": 0,
+        "endMs": 3000,
+        "heading": "ProAct: prepares useful work during idle time",
+        "subtitle": "Nonprofit Case · Predict → Evidence → Artifact → Policy → Push"
+      },
+      {
+        "id": "conversation",
+        "label": "Ask",
+        "startMs": 3000,
+        "endMs": 15700,
+        "messages": [
+          {
+            "role": "user",
+            "text": "Case HA-88201 is still stalled. Can you help me see all missing, expired, or inconsistent documents together?",
+            "typingDelayMs": 0,
+            "displayDurationMs": 3600
+          },
+          {
+            "role": "assistant",
+            "text": "Yes. The case is awaiting documents: missing pay stub items, an expired pay stub, a bank-name mismatch, and a 90-day closure deadline.",
+            "typingDelayMs": 900,
+            "displayDurationMs": 3200
+          },
+          {
+            "role": "user",
+            "text": "I'll compare the portal record. If a clean follow-up checklist would help, prepare it while I look.",
+            "typingDelayMs": 0,
+            "displayDurationMs": 3200,
+            "isIdleTrigger": true
+          }
+        ]
+      },
+      {
+        "id": "idle_transition",
+        "label": "Idle",
+        "startMs": 15700,
+        "endMs": 20200,
+        "idleLabel": "User reviewing case document record",
+        "idleDuration": "20",
+        "clockAcceleration": 4
+      },
+      {
+        "id": "predict",
+        "label": "Predict",
+        "startMs": 20200,
+        "endMs": 27700,
+        "inspectorLabel": "Predict next need",
+        "prediction": {
+          "title": "Next need: document gap checklist",
+          "summary": "The user needs a single, follow-up-ready view of case blockers. A checklist plus table is likely more useful than another chat answer."
+        },
+        "candidates": [
+          {
+            "title": "Application Document Gap Checklist",
+            "confidence": "High",
+            "selected": true
+          },
+          {
+            "title": "Raw portal fact list",
+            "confidence": "Medium"
+          },
+          {
+            "title": "Contact client automatically",
+            "confidence": "Blocked"
+          }
+        ],
+        "badges": [
+          "low risk",
+          "low interruption",
+          "read-only evidence"
+        ]
+      },
+      {
+        "id": "explore",
+        "label": "Evidence",
+        "startMs": 27700,
+        "endMs": 35200,
+        "inspectorLabel": "Gather read-only evidence",
+        "safetyNote": "Read-only evidence · no portal writes, no client contact, no submissions",
+        "facts": [
+          {
+            "factId": "GAP-01",
+            "label": "Case HA-88201"
+          },
+          {
+            "factId": "GAP-02",
+            "label": "Stalled - Awaiting Documents"
+          },
+          {
+            "factId": "GAP-03",
+            "label": "Missing pay stub"
+          },
+          {
+            "factId": "GAP-04",
+            "label": "Expired pay stub"
+          },
+          {
+            "factId": "GAP-05",
+            "label": "Name Affidavit Form 11-B"
+          },
+          {
+            "factId": "GAP-06",
+            "label": "90-day closure deadline"
+          },
+          {
+            "factId": "GAP-07",
+            "label": "Docs > Verification"
+          }
+        ]
+      },
+      {
+        "id": "artifact",
+        "label": "Brief",
+        "startMs": 35200,
+        "endMs": 43200,
+        "artifactTitle": "Application Document Gap Checklist",
+        "artifactFooter": "Checklist draft prepared from read-only case evidence",
+        "artifactClass": "wide",
+        "summaryRows": [
+          {
+            "label": "Case",
+            "value": "HA-88201 · Stalled - Awaiting Documents",
+            "ref": "GAP-01"
+          },
+          {
+            "label": "Missing",
+            "value": "Second pay stub, landlord letter, Carlos Reyes birth certificate",
+            "ref": "GAP-03"
+          },
+          {
+            "label": "Expired",
+            "value": "Global Logistics Inc. pay stub dated Sep 1, 2023",
+            "ref": "GAP-04"
+          },
+          {
+            "label": "Name mismatch",
+            "value": "Javier Rey bank statement requires Form 11-B",
+            "ref": "GAP-05"
+          },
+          {
+            "label": "Deadline",
+            "value": "Automatic closure date: Jan 13, 2024",
+            "ref": "GAP-06"
+          }
+        ]
+      },
+      {
+        "id": "artifact_table",
+        "label": "Table",
+        "startMs": 43200,
+        "endMs": 50700,
+        "artifactTitle": "Application Document Gap Checklist",
+        "artifactFooter": "Follow-up table · ready for user review",
+        "artifactClass": "wide",
+        "summaryRows": [
+          {
+            "label": "Case",
+            "value": "HA-88201",
+            "ref": "GAP-01"
+          },
+          {
+            "label": "Blocking gaps",
+            "value": "Missing, expired, and inconsistent documents",
+            "ref": "GAP-03"
+          },
+          {
+            "label": "Deadline",
+            "value": "Jan 13, 2024",
+            "ref": "GAP-06"
+          }
+        ],
+        "tableRows": [
+          {
+            "area": "Case",
+            "finding": "HA-88201 is stalled awaiting documents.",
+            "nextStep": "Confirm the record before outreach."
+          },
+          {
+            "area": "Missing",
+            "finding": "Second pay stub, landlord reference letter, and Carlos Reyes birth certificate are missing.",
+            "nextStep": "Group into one follow-up list."
+          },
+          {
+            "area": "Expired",
+            "finding": "Global Logistics Inc. pay stub is older than the 60-day policy window.",
+            "nextStep": "Request a current pay stub."
+          },
+          {
+            "area": "Name mismatch",
+            "finding": "Bank statement uses Javier Rey instead of Javier Reyes.",
+            "nextStep": "Request signed Form 11-B."
+          },
+          {
+            "area": "Deadline",
+            "finding": "90-day closure date is Jan 13, 2024.",
+            "nextStep": "Prioritize deadline-safe follow-up."
+          }
+        ]
+      },
+      {
+        "id": "delivery",
+        "label": "Policy",
+        "startMs": 50700,
+        "endMs": 55700,
+        "deliveryTitle": "Delivery Decision",
+        "artifactClass": "policy",
+        "statusLine": "Delivering prepared document checklist to user workspace...",
+        "options": [
+          {
+            "mode": "Push now",
+            "status": "✓",
+            "statusLabel": "Selected",
+            "reason": "Useful internal draft, low risk, low interruption.",
+            "class": "selected"
+          },
+          {
+            "mode": "Queue",
+            "status": "○",
+            "statusLabel": "Available",
+            "reason": "Could wait, but user explicitly invited preparation.",
+            "class": "queue"
+          },
+          {
+            "mode": "Store",
+            "status": "○",
+            "statusLabel": "Fallback",
+            "reason": "Keep evidence available, but the checklist is ready now.",
+            "class": "stored"
+          }
+        ],
+        "summaryLines": [
+          "Utility 0.82 >= threshold · Interruption cost: Low",
+          "User explicitly invited preparation → safe to push",
+          "No writes to portal, client messages, submissions, or eligibility records."
+        ]
+      },
+      {
+        "id": "push_handoff",
+        "label": "Push",
+        "startMs": 55700,
+        "endMs": 59000,
+        "notification": {
+          "title": "ProAct prepared a document gap checklist while you were away.",
+          "body": "Found case status, missing, expired, inconsistent, and deadline evidence from read-only sources.",
+          "meta": "Prepared from read-only evidence.",
+          "safety": "User controls next action.",
+          "actions": [
+            {
+              "label": "Open brief",
+              "style": "primary"
+            },
+            {
+              "label": "Copy table",
+              "style": "secondary"
+            },
+            {
+              "label": "Dismiss",
+              "style": "secondary"
+            }
+          ]
+        }
+      },
+      {
+        "id": "push_delivered",
+        "label": "Delivered",
+        "startMs": 59000,
+        "endMs": 66000,
+        "artifactTitle": "Application Document Gap Checklist",
+        "artifactSubtitle": "Prepared during idle time from read-only evidence.",
+        "artifactFooter": "User controls next action · No writes were performed.",
+        "artifactClass": "wide delivered",
+        "notification": {
+          "title": "ProAct prepared a document gap checklist while you were away.",
+          "body": "Found case status, missing, expired, inconsistent, and deadline evidence from read-only sources.",
+          "meta": "Prepared from read-only evidence.",
+          "safety": "User controls next action.",
+          "actions": [
+            {
+              "label": "Open brief",
+              "style": "primary"
+            },
+            {
+              "label": "Copy table",
+              "style": "secondary"
+            },
+            {
+              "label": "Dismiss",
+              "style": "secondary"
+            }
+          ]
+        },
+        "summaryRows": [
+          {
+            "label": "Case",
+            "value": "HA-88201 stalled",
+            "ref": "GAP-01"
+          },
+          {
+            "label": "Gaps",
+            "value": "Missing, Expired, and Name mismatch",
+            "ref": "GAP-03"
+          },
+          {
+            "label": "Deadline",
+            "value": "Jan 13, 2024",
+            "ref": "GAP-06"
+          }
+        ],
+        "tableRows": [
+          {
+            "area": "Case",
+            "finding": "HA-88201 is awaiting documents.",
+            "nextStep": "Verify in Docs > Verification."
+          },
+          {
+            "area": "Missing",
+            "finding": "Pay stub, landlord letter, and Carlos birth certificate are missing.",
+            "nextStep": "Copy follow-up list."
+          },
+          {
+            "area": "Deadline",
+            "finding": "Automatic closure date is Jan 13, 2024.",
+            "nextStep": "Prioritize outreach manually."
+          }
+        ],
+        "cta": [
+          {
+            "label": "Open brief",
+            "style": "primary"
+          },
+          {
+            "label": "Copy table",
+            "style": "secondary"
+          },
+          {
+            "label": "Copy follow-up list",
+            "style": "secondary"
+          }
+        ]
+      }
+    ]
+  }
+}

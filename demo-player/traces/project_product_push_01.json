@@ -1,0 +1,601 @@
+{
+  "schemaVersion": 1,
+  "caseId": "project_product_push_01",
+  "domain": "Project Kickoff",
+  "title": "Project Aetherium Kickoff Push",
+  "subtitle": "Kickoff brief, evidence table, low-risk push",
+  "durationLabel": "66s video pass",
+  "chat": [
+    {
+      "role": "user",
+      "text": "Can you remind me of Project Aetherium's timeline, phases, budget, and owner before kickoff?"
+    },
+    {
+      "role": "assistant",
+      "text": "I can help organize the fundamentals first: schedule, budget, people, and where the source docs live."
+    },
+    {
+      "role": "user",
+      "text": "I'll skim the project docs for a minute, then we can turn this into kickoff material."
+    }
+  ],
+  "idleWindow": {
+    "trigger": "User paused to review Project Aetherium docs",
+    "durationLabel": "20s quiet window",
+    "observedContext": "The conversation centered on launch facts, project governance, budget, owners, and kickoff-ready materials."
+  },
+  "predictedNeed": {
+    "title": "User likely needs a kickoff brief next",
+    "summary": "The next useful artifact is a compact brief that combines project fundamentals with a table of prepared findings and next steps.",
+    "confidenceLabel": "prototype-high"
+  },
+  "stages": [
+    {
+      "kind": "idle_trigger",
+      "title": "Idle window begins",
+      "summary": "The user pauses to inspect docs; ProAct stays read-only and prepares context.",
+      "durationMs": 5000
+    },
+    {
+      "kind": "predict_need",
+      "title": "Predict kickoff artifact",
+      "summary": "The system predicts that a kickoff brief will be more useful than another short answer.",
+      "durationMs": 8000
+    },
+    {
+      "kind": "gather_evidence",
+      "title": "Gather read-only evidence",
+      "summary": "Only synthetic fact-sheet entries are selected for timeline, budget, owner, docs, IP, and infrastructure.",
+      "durationMs": 9000
+    },
+    {
+      "kind": "compose_artifact",
+      "title": "Prepare document and table",
+      "summary": "Evidence is organized into a kickoff brief plus a compact action table.",
+      "durationMs": 10000
+    },
+    {
+      "kind": "deliver_decision",
+      "title": "Push delivery",
+      "summary": "Because this is a low-risk internal draft, the prepared artifact is pushed for user control.",
+      "durationMs": 8500
+    }
+  ],
+  "selectedFacts": [
+    {
+      "factId": "AET-F01",
+      "sourceType": "fact_sheet",
+      "sourceFactIds": [
+        "F01",
+        "F03",
+        "F04"
+      ],
+      "sourceCategories": [
+        "project_management"
+      ],
+      "label": "timeline and phases",
+      "displayText": "Project Aetherium runs from October 1, 2023 to September 30, 2026, with phases for Blue Sky Research, Prototype Development, and Commercialization Path.",
+      "relevance": "Supports the kickoff brief timeline, duration, phase structure, and tracking code."
+    },
+    {
+      "factId": "AET-F02",
+      "sourceType": "fact_sheet",
+      "sourceFactIds": [
+        "F02"
+      ],
+      "sourceCategories": [
+        "project_management"
+      ],
+      "label": "budget",
+      "displayText": "The approved budget is 7.2M USD, allocated as 1.8M for Year 1, 2.4M for Year 2, and 3.0M for Year 3.",
+      "relevance": "Supports the budget summary and the kickoff next step to confirm spend owners."
+    },
+    {
+      "factId": "AET-F03",
+      "sourceType": "fact_sheet",
+      "sourceFactIds": [
+        "F05",
+        "F06",
+        "F07"
+      ],
+      "sourceCategories": [
+        "team"
+      ],
+      "label": "owners",
+      "displayText": "Dr. Aris Thorne is Principal Investigator, Lena Petrova is Project Manager, and the Year 1 core team includes 4 research engineers and 2 data scientists.",
+      "relevance": "Supports the owner line and governance handoff."
+    },
+    {
+      "factId": "AET-F04",
+      "sourceType": "fact_sheet",
+      "sourceFactIds": [
+        "F08"
+      ],
+      "sourceCategories": [
+        "project_management"
+      ],
+      "label": "governance",
+      "displayText": "Quarterly steering committee reviews are scheduled for the second Tuesday of January, April, July, and October.",
+      "relevance": "Supports the governance row in the kickoff table."
+    },
+    {
+      "factId": "AET-F05",
+      "sourceType": "fact_sheet",
+      "sourceFactIds": [
+        "F25",
+        "F26"
+      ],
+      "sourceCategories": [
+        "documentation"
+      ],
+      "label": "docs",
+      "displayText": "Official docs are maintained in Confluence under Aetherium Project (AET), with the Tech Feasibility & Market Trend Tracker at page ID 8675309.",
+      "relevance": "Supports the docs location and tracker next step."
+    },
+    {
+      "factId": "AET-F06",
+      "sourceType": "fact_sheet",
+      "sourceFactIds": [
+        "F13",
+        "F15",
+        "F16"
+      ],
+      "sourceCategories": [
+        "legal"
+      ],
+      "label": "IP",
+      "displayText": "Vance & Sterling LLP handles IP matters; the first provisional patent application is scheduled by March 31, 2024, and the main matter uses reference ID ID-IP-2023-004.",
+      "relevance": "Supports the IP row and patent follow-up."
+    },
+    {
+      "factId": "AET-F07",
+      "sourceType": "fact_sheet",
+      "sourceFactIds": [
+        "F17",
+        "F19",
+        "F20"
+      ],
+      "sourceCategories": [
+        "infrastructure"
+      ],
+      "label": "infrastructure",
+      "displayText": "Phase 1 uses the Prometheus GPU cluster, aetherium-data object storage, and the aetherium_exp_db metadata database.",
+      "relevance": "Supports the infrastructure row without opening systems or credentials."
+    }
+  ],
+  "artifact": {
+    "title": "Project Aetherium Kickoff Brief",
+    "sections": [
+      {
+        "heading": "Brief summary",
+        "items": [
+          {
+            "text": "Duration: October 1, 2023 to September 30, 2026; tracking code PRJ-AET-2023.",
+            "evidenceRefs": [
+              "AET-F01"
+            ]
+          },
+          {
+            "text": "Budget: 7.2M USD total, split across Year 1, Year 2, and Year 3 allocations.",
+            "evidenceRefs": [
+              "AET-F02"
+            ]
+          },
+          {
+            "text": "Owner: Dr. Aris Thorne is PI; Lena Petrova is Project Manager.",
+            "evidenceRefs": [
+              "AET-F03"
+            ]
+          },
+          {
+            "text": "Docs location: Confluence Aetherium Project (AET), tracker page ID 8675309.",
+            "evidenceRefs": [
+              "AET-F05"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Prepared table",
+        "items": [
+          {
+            "text": "Timeline, budget, governance, IP, and infrastructure are ready as kickoff discussion rows.",
+            "evidenceRefs": [
+              "AET-F01",
+              "AET-F02",
+              "AET-F04",
+              "AET-F06",
+              "AET-F07"
+            ]
+          },
+          {
+            "text": "Adding the brief to an agenda still requires the user to choose the meeting context.",
+            "uncertainty": "The artifact does not modify calendars, docs, Jira, or Confluence automatically."
+          }
+        ]
+      }
+    ]
+  },
+  "deliveryDecision": {
+    "action": "push",
+    "reason": "The artifact is an internal kickoff draft based on read-only evidence, with low interruption cost and no external side effect.",
+    "userConfirmationRequired": false,
+    "safeNextStep": "Show the brief and let the user open, copy, or add it to an agenda explicitly.",
+    "blockedActions": [
+      "No automatic calendar edits",
+      "No Confluence or Jira writes",
+      "No budget approvals",
+      "No IP filing actions",
+      "No infrastructure access"
+    ],
+    "userVisibleItems": [
+      "Project Aetherium Kickoff Brief",
+      "Prepared findings table",
+      "Open brief / Copy table / Add to kickoff agenda buttons"
+    ]
+  },
+  "safetyBoundary": {
+    "summary": "ProAct prepares a draft artifact from read-only project evidence and leaves every follow-up action under user control.",
+    "blockedActions": [
+      "No automatic calendar edits",
+      "No Confluence or Jira writes",
+      "No budget approvals",
+      "No IP filing actions",
+      "No infrastructure access"
+    ]
+  },
+  "redactionNotes": [
+    "Curated from a fictional Project Aetherium scenario and synthetic fact-sheet entries.",
+    "Private operational metadata, internal prompts, unfiltered transcripts, and live endpoints are omitted.",
+    "The demo does not open systems, submit changes, or use real organization data."
+  ],
+  "videoMode": {
+    "version": 4,
+    "totalDurationMs": 66000,
+    "phases": [
+      {
+        "id": "title_card",
+        "label": "Title",
+        "startMs": 0,
+        "endMs": 3000,
+        "heading": "ProAct: prepares useful work during idle time",
+        "subtitle": "Project Kickoff · Predict → Evidence → Artifact → Policy → Push"
+      },
+      {
+        "id": "conversation",
+        "label": "Ask",
+        "startMs": 3000,
+        "endMs": 15700,
+        "messages": [
+          {
+            "role": "user",
+            "text": "Can you remind me of Project Aetherium's timeline, phases, budget, and who owns the launch?",
+            "typingDelayMs": 0,
+            "displayDurationMs": 3600
+          },
+          {
+            "role": "assistant",
+            "text": "Yes. I can organize the kickoff basics first, then we can turn them into a reusable brief.",
+            "typingDelayMs": 900,
+            "displayDurationMs": 3200
+          },
+          {
+            "role": "user",
+            "text": "I'll skim the docs for a minute. If there is a useful kickoff artifact, prepare it.",
+            "typingDelayMs": 0,
+            "displayDurationMs": 3200,
+            "isIdleTrigger": true
+          }
+        ]
+      },
+      {
+        "id": "idle_transition",
+        "label": "Idle",
+        "startMs": 15700,
+        "endMs": 20200,
+        "idleLabel": "User reviewing project docs",
+        "idleDuration": "20",
+        "clockAcceleration": 4
+      },
+      {
+        "id": "predict",
+        "label": "Predict",
+        "startMs": 20200,
+        "endMs": 27700,
+        "inspectorLabel": "Predict next need",
+        "prediction": {
+          "title": "Next need: kickoff brief",
+          "summary": "The user has fundamentals, a docs pause, and an upcoming handoff. A brief plus table is likely more useful than another chat answer."
+        },
+        "candidates": [
+          {
+            "title": "Project Aetherium Kickoff Brief",
+            "confidence": "High",
+            "selected": true
+          },
+          {
+            "title": "Budget allocation explainer",
+            "confidence": "Medium"
+          },
+          {
+            "title": "Raw fact list only",
+            "confidence": "Low"
+          }
+        ],
+        "badges": [
+          "low risk",
+          "low interruption",
+          "read-only evidence"
+        ]
+      },
+      {
+        "id": "explore",
+        "label": "Evidence",
+        "startMs": 27700,
+        "endMs": 35200,
+        "inspectorLabel": "Gather read-only evidence",
+        "safetyNote": "Read-only evidence · no writes to docs, Jira, calendar, or infrastructure",
+        "facts": [
+          {
+            "factId": "AET-01",
+            "label": "Timeline + phases"
+          },
+          {
+            "factId": "AET-02",
+            "label": "Budget split"
+          },
+          {
+            "factId": "AET-03",
+            "label": "PI + PM"
+          },
+          {
+            "factId": "AET-04",
+            "label": "Governance cadence"
+          },
+          {
+            "factId": "AET-05",
+            "label": "Confluence tracker"
+          },
+          {
+            "factId": "AET-06",
+            "label": "IP docket"
+          },
+          {
+            "factId": "AET-07",
+            "label": "Infra allocation"
+          }
+        ]
+      },
+      {
+        "id": "artifact",
+        "label": "Brief",
+        "startMs": 35200,
+        "endMs": 43200,
+        "artifactTitle": "Project Aetherium Kickoff Brief",
+        "artifactFooter": "Brief draft prepared from read-only evidence",
+        "artifactClass": "wide",
+        "summaryRows": [
+          {
+            "label": "Duration",
+            "value": "Oct 1, 2023 to Sep 30, 2026",
+            "ref": "AET-01"
+          },
+          {
+            "label": "Tracking code",
+            "value": "PRJ-AET-2023",
+            "ref": "AET-01"
+          },
+          {
+            "label": "Budget",
+            "value": "7.2M USD total · Y1 1.8M · Y2 2.4M · Y3 3.0M",
+            "ref": "AET-02"
+          },
+          {
+            "label": "PM",
+            "value": "Lena Petrova · launch coordination owner",
+            "ref": "AET-03"
+          },
+          {
+            "label": "Docs",
+            "value": "Confluence Aetherium Project (AET), tracker page ID 8675309",
+            "ref": "AET-05"
+          }
+        ]
+      },
+      {
+        "id": "artifact_table",
+        "label": "Table",
+        "startMs": 43200,
+        "endMs": 50700,
+        "artifactTitle": "Project Aetherium Kickoff Brief",
+        "artifactFooter": "Document + table · ready for kickoff review",
+        "artifactClass": "wide",
+        "summaryRows": [
+          {
+            "label": "Duration",
+            "value": "Oct 1, 2023 to Sep 30, 2026",
+            "ref": "AET-01"
+          },
+          {
+            "label": "Budget",
+            "value": "7.2M USD across three project years",
+            "ref": "AET-02"
+          },
+          {
+            "label": "PM",
+            "value": "Lena Petrova",
+            "ref": "AET-03"
+          }
+        ],
+        "tableRows": [
+          {
+            "area": "Timeline",
+            "finding": "Three phases: Blue Sky Research, Prototype Development, Commercialization Path.",
+            "nextStep": "Confirm phase owners before kickoff."
+          },
+          {
+            "area": "Budget",
+            "finding": "7.2M USD approved with increasing yearly allocation.",
+            "nextStep": "Flag spend cadence for steering review."
+          },
+          {
+            "area": "Governance",
+            "finding": "Quarterly steering reviews on the second Tuesday of Jan, Apr, Jul, and Oct.",
+            "nextStep": "Add review cadence to agenda."
+          },
+          {
+            "area": "IP",
+            "finding": "Vance & Sterling handles IP; first provisional filing due Mar 31, 2024.",
+            "nextStep": "Confirm patent tracker owner."
+          },
+          {
+            "area": "Infrastructure",
+            "finding": "Prometheus GPU cluster, aetherium-data storage, and metadata DB are designated.",
+            "nextStep": "Verify access separately with infra owner."
+          }
+        ]
+      },
+      {
+        "id": "delivery",
+        "label": "Policy",
+        "startMs": 50700,
+        "endMs": 55700,
+        "deliveryTitle": "Delivery Decision",
+        "artifactClass": "policy",
+        "statusLine": "Delivering prepared brief to user workspace...",
+        "options": [
+          {
+            "mode": "Push now",
+            "status": "✓",
+            "statusLabel": "Selected",
+            "reason": "Useful internal draft, low risk, low interruption.",
+            "class": "selected"
+          },
+          {
+            "mode": "Queue",
+            "status": "○",
+            "statusLabel": "Available",
+            "reason": "Could wait, but user explicitly invited preparation.",
+            "class": "queue"
+          },
+          {
+            "mode": "Store",
+            "status": "○",
+            "statusLabel": "Fallback",
+            "reason": "Keep evidence available, but the artifact is ready now.",
+            "class": "stored"
+          }
+        ],
+        "summaryLines": [
+          "Utility 0.82 ≥ θ · Interruption cost: Low",
+          "User explicitly invited preparation → safe to push",
+          "No writes to docs, calendar, Jira, IP, or infrastructure."
+        ]
+      },
+      {
+        "id": "push_handoff",
+        "label": "Push",
+        "startMs": 55700,
+        "endMs": 59000,
+        "notification": {
+          "title": "ProAct prepared a kickoff brief while you were away.",
+          "body": "Found timeline, budget, owner, and kickoff agenda items from read-only evidence.",
+          "meta": "Prepared from read-only evidence.",
+          "safety": "User controls next action.",
+          "actions": [
+            {
+              "label": "Open brief",
+              "style": "primary"
+            },
+            {
+              "label": "Copy table",
+              "style": "secondary"
+            },
+            {
+              "label": "Dismiss",
+              "style": "secondary"
+            }
+          ]
+        }
+      },
+      {
+        "id": "push_delivered",
+        "label": "Delivered",
+        "startMs": 59000,
+        "endMs": 66000,
+        "artifactTitle": "Project Aetherium Kickoff Brief",
+        "artifactSubtitle": "Prepared during idle time from read-only evidence.",
+        "artifactFooter": "User controls next action · No writes were performed.",
+        "artifactClass": "wide delivered",
+        "notification": {
+          "title": "ProAct prepared a kickoff brief while you were away.",
+          "body": "Found timeline, budget, owner, and kickoff agenda items from read-only evidence.",
+          "meta": "Prepared from read-only evidence.",
+          "safety": "User controls next action.",
+          "actions": [
+            {
+              "label": "Open brief",
+              "style": "primary"
+            },
+            {
+              "label": "Copy table",
+              "style": "secondary"
+            },
+            {
+              "label": "Dismiss",
+              "style": "secondary"
+            }
+          ]
+        },
+        "summaryRows": [
+          {
+            "label": "Duration",
+            "value": "Oct 1, 2023 to Sep 30, 2026",
+            "ref": "AET-01"
+          },
+          {
+            "label": "Budget",
+            "value": "7.2M USD · Y1 1.8M · Y2 2.4M · Y3 3.0M",
+            "ref": "AET-02"
+          },
+          {
+            "label": "PM",
+            "value": "Lena Petrova",
+            "ref": "AET-03"
+          }
+        ],
+        "tableRows": [
+          {
+            "area": "Timeline",
+            "finding": "Three phases across the 3-year plan.",
+            "nextStep": "Confirm phase owners."
+          },
+          {
+            "area": "Governance",
+            "finding": "Quarterly steering reviews are already defined.",
+            "nextStep": "Add cadence to kickoff agenda."
+          },
+          {
+            "area": "Infrastructure",
+            "finding": "Compute, storage, and metadata DB are designated.",
+            "nextStep": "Verify access separately."
+          }
+        ],
+        "cta": [
+          {
+            "label": "Open brief",
+            "style": "primary"
+          },
+          {
+            "label": "Copy table",
+            "style": "secondary"
+          },
+          {
+            "label": "Add to agenda",
+            "style": "secondary"
+          }
+        ]
+      }
+    ]
+  }
+}

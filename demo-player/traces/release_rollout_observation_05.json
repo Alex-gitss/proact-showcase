@@ -1,0 +1,599 @@
+{
+  "schemaVersion": 1,
+  "caseId": "release_rollout_observation_05",
+  "domain": "Software Release Management",
+  "title": "Rollout Signal Brief Push",
+  "subtitle": "Rollout decision brief, rollback checklist, user-controlled push",
+  "durationLabel": "66s video pass",
+  "chat": [
+    {
+      "role": "user",
+      "text": "I am reviewing early signals for the NexusDB v4.7.1 phased rollout and need the rollout parameters and guardrails in one place."
+    },
+    {
+      "role": "assistant",
+      "text": "The rollout started with the Free-Tier cohort in us-east-1, and the key guardrails include cache hit rate, P99 latency, fatal errors, and rollback readiness."
+    },
+    {
+      "role": "user",
+      "text": "I will watch the dashboard for a minute. If a decision brief and rollback checklist would help, prepare it."
+    }
+  ],
+  "idleWindow": {
+    "trigger": "User paused to observe NexusDB v4.7.1 rollout metrics",
+    "durationLabel": "20s quiet window",
+    "observedContext": "The conversation centered on rollout cohort, success metrics, P99 latency, fatal error detection, and rollback readiness."
+  },
+  "predictedNeed": {
+    "title": "User likely needs a rollout decision brief next",
+    "summary": "The next useful artifact is a compact brief that aligns rollout parameters, signal thresholds, and rollback readiness without executing any production action.",
+    "confidenceLabel": "prototype-high"
+  },
+  "stages": [
+    {
+      "kind": "idle_trigger",
+      "title": "Idle window begins",
+      "summary": "The user pauses to monitor rollout signals; ProAct stays read-only and prepares context.",
+      "durationMs": 5000
+    },
+    {
+      "kind": "predict_need",
+      "title": "Predict rollout artifact",
+      "summary": "The system predicts that a decision brief will be more useful than another scattered list of thresholds.",
+      "durationMs": 8000
+    },
+    {
+      "kind": "gather_evidence",
+      "title": "Gather read-only evidence",
+      "summary": "Only synthetic fact-sheet entries are selected for cohort, metric targets, fatal query, and rollback command text.",
+      "durationMs": 9000
+    },
+    {
+      "kind": "compose_artifact",
+      "title": "Prepare brief and checklist",
+      "summary": "Evidence is organized into a rollout decision brief plus a compact rollback readiness table.",
+      "durationMs": 10000
+    },
+    {
+      "kind": "deliver_decision",
+      "title": "Push delivery",
+      "summary": "Because this is a read-only internal draft, the prepared artifact is pushed for user control.",
+      "durationMs": 8500
+    }
+  ],
+  "selectedFacts": [
+    {
+      "factId": "ROL-F01",
+      "sourceType": "fact_sheet",
+      "sourceFactIds": [
+        "F05",
+        "F06",
+        "F09"
+      ],
+      "sourceCategories": [
+        "rollout_strategy"
+      ],
+      "label": "initial rollout",
+      "displayText": "NexusDB v4.7.1 began rollout on October 26, 2023 at 10:00 UTC for the Free-Tier cohort in us-east-1.",
+      "relevance": "Supports cohort and scope framing."
+    },
+    {
+      "factId": "ROL-F02",
+      "sourceType": "fact_sheet",
+      "sourceFactIds": [
+        "F10",
+        "F11"
+      ],
+      "sourceCategories": [
+        "monitoring"
+      ],
+      "label": "cache hit rate",
+      "displayText": "The primary dashboard is nexus-rqc-rollout, and the key success metric is Cache Hit Rate with a target above 85.",
+      "relevance": "Supports success metric and dashboard context."
+    },
+    {
+      "factId": "ROL-F03",
+      "sourceType": "fact_sheet",
+      "sourceFactIds": [
+        "F13",
+        "F15"
+      ],
+      "sourceCategories": [
+        "decision_criteria"
+      ],
+      "label": "P99 rollback threshold",
+      "displayText": "P99 query latency for reads triggers a full rollback if it exceeds 500ms for 5 consecutive minutes.",
+      "relevance": "Supports latency row and rollback threshold."
+    },
+    {
+      "factId": "ROL-F04",
+      "sourceType": "fact_sheet",
+      "sourceFactIds": [
+        "F14",
+        "F19"
+      ],
+      "sourceCategories": [
+        "decision_criteria"
+      ],
+      "label": "fatal error query",
+      "displayText": "The Splunk query for fatal cache consistency errors is index=nexusdb level=FATAL error_code=CacheConsistencyViolation.",
+      "relevance": "Supports fatal error monitoring and manual rollback readiness."
+    },
+    {
+      "factId": "ROL-F05",
+      "sourceType": "fact_sheet",
+      "sourceFactIds": [
+        "F18"
+      ],
+      "sourceCategories": [
+        "decision_criteria"
+      ],
+      "label": "intensified monitoring",
+      "displayText": "Intensified monitoring begins if cache hit rate drops below 90 while remaining above the rollback threshold of 80.",
+      "relevance": "Supports the continue versus monitor decision."
+    },
+    {
+      "factId": "ROL-F06",
+      "sourceType": "fact_sheet",
+      "sourceFactIds": [
+        "F07",
+        "F17"
+      ],
+      "sourceCategories": [
+        "rollout_strategy"
+      ],
+      "label": "next phase criteria",
+      "displayText": "The next planned stage is a quarter of us-east-1 users on October 28, 2023 at 14:00 UTC if key metrics remain within the allowed baseline band for 4 continuous hours.",
+      "relevance": "Supports next-step decision framing."
+    },
+    {
+      "factId": "ROL-F07",
+      "sourceType": "fact_sheet",
+      "sourceFactIds": [
+        "F24",
+        "F25"
+      ],
+      "sourceCategories": [
+        "tooling"
+      ],
+      "label": "rollback command text",
+      "displayText": "The rollback command text is ./deployment-cli rollback --service nexusdb --version 4.7.0 --feature-flag enable-realtime-query-cache=false.",
+      "relevance": "Supports a prepared checklist without executing anything."
+    }
+  ],
+  "artifact": {
+    "title": "Rollout Decision Brief",
+    "sections": [
+      {
+        "heading": "Brief summary",
+        "items": [
+          {
+            "text": "Cohort: NexusDB v4.7.1 is live for the Free-Tier cohort in us-east-1.",
+            "evidenceRefs": [
+              "ROL-F01"
+            ]
+          },
+          {
+            "text": "Success metric: Cache Hit Rate should remain above 85.",
+            "evidenceRefs": [
+              "ROL-F02"
+            ]
+          },
+          {
+            "text": "Rollback signal: P99 read latency over 500ms for 5 consecutive minutes triggers rollback.",
+            "evidenceRefs": [
+              "ROL-F03"
+            ]
+          },
+          {
+            "text": "Fatal error watch: CacheConsistencyViolation requires immediate manual rollback review.",
+            "evidenceRefs": [
+              "ROL-F04"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Prepared table",
+        "items": [
+          {
+            "text": "Cohort, cache hit rate, latency, fatal query, and rollback command are ready as decision rows.",
+            "evidenceRefs": [
+              "ROL-F01",
+              "ROL-F02",
+              "ROL-F03",
+              "ROL-F04",
+              "ROL-F07"
+            ]
+          },
+          {
+            "text": "Executing rollback still requires an authorized human decision.",
+            "uncertainty": "The artifact does not run commands, change flags, write Confluence, or issue production instructions."
+          }
+        ]
+      }
+    ]
+  },
+  "deliveryDecision": {
+    "action": "push",
+    "reason": "The artifact is an internal rollout draft based on read-only evidence, with low interruption cost and no external side effect.",
+    "userConfirmationRequired": false,
+    "safeNextStep": "Show the rollout brief and let the user open it, copy the table, or open runbook notes explicitly.",
+    "blockedActions": [
+      "No rollback execution",
+      "No feature flag changes",
+      "No production commands",
+      "No Confluence writes",
+      "No Slack production instructions"
+    ],
+    "userVisibleItems": [
+      "Rollout Decision Brief",
+      "Rollback readiness table",
+      "Open brief / Copy table / Open runbook notes buttons"
+    ]
+  },
+  "safetyBoundary": {
+    "summary": "ProAct prepares a rollout signal brief from read-only evidence and leaves every production action under user control.",
+    "blockedActions": [
+      "No rollback execution",
+      "No feature flag changes",
+      "No production commands",
+      "No Confluence writes",
+      "No Slack production instructions"
+    ]
+  },
+  "redactionNotes": [
+    "Curated from a fictional software rollout scenario and synthetic fact-sheet entries.",
+    "Private operational metadata, internal prompts, unfiltered transcripts, and live endpoints are omitted.",
+    "The demo does not run commands, change flags, send team instructions, or use real organization data."
+  ],
+  "videoMode": {
+    "version": 4,
+    "totalDurationMs": 66000,
+    "phases": [
+      {
+        "id": "title_card",
+        "label": "Title",
+        "startMs": 0,
+        "endMs": 3000,
+        "heading": "ProAct: prepares useful work during idle time",
+        "subtitle": "Software Release · Predict → Evidence → Artifact → Policy → Push"
+      },
+      {
+        "id": "conversation",
+        "label": "Ask",
+        "startMs": 3000,
+        "endMs": 15700,
+        "messages": [
+          {
+            "role": "user",
+            "text": "I am watching the NexusDB v4.7.1 rollout. Can you keep the cohort, thresholds, and rollback guardrails straight?",
+            "typingDelayMs": 0,
+            "displayDurationMs": 3600
+          },
+          {
+            "role": "assistant",
+            "text": "Yes. The initial cohort is Free-Tier in us-east-1, with cache hit rate, P99 latency, fatal errors, and rollback readiness as the key signals.",
+            "typingDelayMs": 900,
+            "displayDurationMs": 3200
+          },
+          {
+            "role": "user",
+            "text": "I'll watch the dashboard. If a rollout decision brief would help, prepare it while I monitor.",
+            "typingDelayMs": 0,
+            "displayDurationMs": 3200,
+            "isIdleTrigger": true
+          }
+        ]
+      },
+      {
+        "id": "idle_transition",
+        "label": "Idle",
+        "startMs": 15700,
+        "endMs": 20200,
+        "idleLabel": "User monitoring rollout signals",
+        "idleDuration": "20",
+        "clockAcceleration": 4
+      },
+      {
+        "id": "predict",
+        "label": "Predict",
+        "startMs": 20200,
+        "endMs": 27700,
+        "inspectorLabel": "Predict next need",
+        "prediction": {
+          "title": "Next need: rollout decision brief",
+          "summary": "The user is monitoring early signals and has asked for thresholds. A decision brief plus rollback checklist is likely more useful than another chat answer."
+        },
+        "candidates": [
+          {
+            "title": "Rollout Decision Brief",
+            "confidence": "High",
+            "selected": true
+          },
+          {
+            "title": "Metric threshold glossary",
+            "confidence": "Medium"
+          },
+          {
+            "title": "Execute rollback",
+            "confidence": "Blocked"
+          }
+        ],
+        "badges": [
+          "low risk",
+          "low interruption",
+          "read-only evidence"
+        ]
+      },
+      {
+        "id": "explore",
+        "label": "Evidence",
+        "startMs": 27700,
+        "endMs": 35200,
+        "inspectorLabel": "Gather read-only evidence",
+        "safetyNote": "Read-only evidence · no writes to flags, production, Confluence, or Slack",
+        "facts": [
+          {
+            "factId": "ROL-01",
+            "label": "Free-Tier cohort"
+          },
+          {
+            "factId": "ROL-02",
+            "label": "us-east-1 rollout"
+          },
+          {
+            "factId": "ROL-03",
+            "label": "Cache Hit Rate target"
+          },
+          {
+            "factId": "ROL-04",
+            "label": "P99 latency threshold"
+          },
+          {
+            "factId": "ROL-05",
+            "label": "Fatal Splunk query"
+          },
+          {
+            "factId": "ROL-06",
+            "label": "Next phase criteria"
+          },
+          {
+            "factId": "ROL-07",
+            "label": "Rollback command text"
+          }
+        ]
+      },
+      {
+        "id": "artifact",
+        "label": "Brief",
+        "startMs": 35200,
+        "endMs": 43200,
+        "artifactTitle": "Rollout Decision Brief",
+        "artifactFooter": "Brief draft prepared from read-only rollout evidence",
+        "artifactClass": "wide",
+        "summaryRows": [
+          {
+            "label": "Cohort",
+            "value": "Free-Tier users in us-east-1",
+            "ref": "ROL-01"
+          },
+          {
+            "label": "Success metric",
+            "value": "Cache Hit Rate target above 85",
+            "ref": "ROL-03"
+          },
+          {
+            "label": "Latency guardrail",
+            "value": "P99 reads over 500ms for 5 minutes triggers rollback",
+            "ref": "ROL-04"
+          },
+          {
+            "label": "Fatal errors",
+            "value": "CacheConsistencyViolation requires manual rollback review",
+            "ref": "ROL-05"
+          },
+          {
+            "label": "Rollback text",
+            "value": "deployment-cli rollback command prepared for authorized use",
+            "ref": "ROL-07"
+          }
+        ]
+      },
+      {
+        "id": "artifact_table",
+        "label": "Table",
+        "startMs": 43200,
+        "endMs": 50700,
+        "artifactTitle": "Rollout Decision Brief",
+        "artifactFooter": "Decision table · ready for user review",
+        "artifactClass": "wide",
+        "summaryRows": [
+          {
+            "label": "Cohort",
+            "value": "Free-Tier users in us-east-1",
+            "ref": "ROL-01"
+          },
+          {
+            "label": "Metric",
+            "value": "Cache Hit Rate above 85",
+            "ref": "ROL-03"
+          },
+          {
+            "label": "Rollback",
+            "value": "Command text prepared only",
+            "ref": "ROL-07"
+          }
+        ],
+        "tableRows": [
+          {
+            "area": "Cohort",
+            "finding": "Initial slice is Free-Tier users in us-east-1.",
+            "nextStep": "Compare signals against this scope."
+          },
+          {
+            "area": "Cache hit rate",
+            "finding": "Target is above 85; below 90 can trigger intensified monitoring.",
+            "nextStep": "Watch trend before expansion."
+          },
+          {
+            "area": "Latency",
+            "finding": "P99 read latency over 500ms for 5 minutes triggers rollback.",
+            "nextStep": "Keep threshold visible."
+          },
+          {
+            "area": "Fatal errors",
+            "finding": "CacheConsistencyViolation appears in the fatal Splunk query.",
+            "nextStep": "Escalate for manual decision."
+          },
+          {
+            "area": "Rollback",
+            "finding": "Rollback command text is known but not executed.",
+            "nextStep": "Require authorized human action."
+          }
+        ]
+      },
+      {
+        "id": "delivery",
+        "label": "Policy",
+        "startMs": 50700,
+        "endMs": 55700,
+        "deliveryTitle": "Delivery Decision",
+        "artifactClass": "policy",
+        "statusLine": "Delivering prepared rollout brief to user workspace...",
+        "options": [
+          {
+            "mode": "Push now",
+            "status": "✓",
+            "statusLabel": "Selected",
+            "reason": "Useful internal draft, low risk, low interruption.",
+            "class": "selected"
+          },
+          {
+            "mode": "Queue",
+            "status": "○",
+            "statusLabel": "Available",
+            "reason": "Could wait, but user explicitly invited preparation.",
+            "class": "queue"
+          },
+          {
+            "mode": "Store",
+            "status": "○",
+            "statusLabel": "Fallback",
+            "reason": "Keep evidence available, but the brief is ready now.",
+            "class": "stored"
+          }
+        ],
+        "summaryLines": [
+          "Utility 0.82 >= threshold · Interruption cost: Low",
+          "User explicitly invited preparation → safe to push",
+          "No writes to flags, production, Confluence, or Slack."
+        ]
+      },
+      {
+        "id": "push_handoff",
+        "label": "Push",
+        "startMs": 55700,
+        "endMs": 59000,
+        "notification": {
+          "title": "ProAct prepared a rollout signal brief while you were away.",
+          "body": "Found cohort, metric, alert, and rollback evidence from read-only sources.",
+          "meta": "Prepared from read-only evidence.",
+          "safety": "User controls next action.",
+          "actions": [
+            {
+              "label": "Open brief",
+              "style": "primary"
+            },
+            {
+              "label": "Copy table",
+              "style": "secondary"
+            },
+            {
+              "label": "Dismiss",
+              "style": "secondary"
+            }
+          ]
+        }
+      },
+      {
+        "id": "push_delivered",
+        "label": "Delivered",
+        "startMs": 59000,
+        "endMs": 66000,
+        "artifactTitle": "Rollout Decision Brief",
+        "artifactSubtitle": "Prepared during idle time from read-only evidence.",
+        "artifactFooter": "User controls next action · No writes were performed.",
+        "artifactClass": "wide delivered",
+        "notification": {
+          "title": "ProAct prepared a rollout signal brief while you were away.",
+          "body": "Found cohort, metric, alert, and rollback evidence from read-only sources.",
+          "meta": "Prepared from read-only evidence.",
+          "safety": "User controls next action.",
+          "actions": [
+            {
+              "label": "Open brief",
+              "style": "primary"
+            },
+            {
+              "label": "Copy table",
+              "style": "secondary"
+            },
+            {
+              "label": "Dismiss",
+              "style": "secondary"
+            }
+          ]
+        },
+        "summaryRows": [
+          {
+            "label": "Cohort",
+            "value": "Free-Tier us-east-1",
+            "ref": "ROL-01"
+          },
+          {
+            "label": "Signals",
+            "value": "Cache hit rate, Latency, and Fatal errors ready",
+            "ref": "ROL-03"
+          },
+          {
+            "label": "Rollback",
+            "value": "Checklist prepared only",
+            "ref": "ROL-07"
+          }
+        ],
+        "tableRows": [
+          {
+            "area": "Cohort",
+            "finding": "Free-Tier us-east-1 is the active slice.",
+            "nextStep": "Scope the metric review."
+          },
+          {
+            "area": "Cache hit rate",
+            "finding": "Below 90 means intensified monitoring before rollback.",
+            "nextStep": "Watch the trend."
+          },
+          {
+            "area": "Rollback",
+            "finding": "Command text is ready but not executed.",
+            "nextStep": "Wait for authorized action."
+          }
+        ],
+        "cta": [
+          {
+            "label": "Open brief",
+            "style": "primary"
+          },
+          {
+            "label": "Copy table",
+            "style": "secondary"
+          },
+          {
+            "label": "Open runbook notes",
+            "style": "secondary"
+          }
+        ]
+      }
+    ]
+  }
+}

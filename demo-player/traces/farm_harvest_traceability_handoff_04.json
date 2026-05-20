@@ -1,0 +1,603 @@
+{
+  "schemaVersion": 1,
+  "caseId": "farm_harvest_traceability_handoff_04",
+  "domain": "Farm Operations",
+  "title": "Traceability Handoff Card Push",
+  "subtitle": "Harvest handoff card, evidence table, user-controlled push",
+  "durationLabel": "66s video pass",
+  "chat": [
+    {
+      "role": "user",
+      "text": "I need the traceability handoff to stay clean from field picking through bin labeling and Wash Station A intake."
+    },
+    {
+      "role": "assistant",
+      "text": "The key handoff is: full bin at roughly 250 lb, crew lead labels immediately, AgriTrace Pro scan verifies the bin, and Wash Station A handles intake or quarantine."
+    },
+    {
+      "role": "user",
+      "text": "I will check the crew flow for a minute. If a handoff card would help, prepare it."
+    }
+  ],
+  "idleWindow": {
+    "trigger": "User paused to review harvest traceability handoff flow",
+    "durationLabel": "20s quiet window",
+    "observedContext": "The conversation centered on field bin fullness, label placement, AgriTrace Pro scanning, Wash Station A intake, and Quarantine Bay Q2 exceptions."
+  },
+  "predictedNeed": {
+    "title": "User likely needs a traceability handoff card next",
+    "summary": "The next useful artifact is a compact handoff card that connects field picking, bin labeling, wash station intake, and exception handling without updating any operational system.",
+    "confidenceLabel": "prototype-high"
+  },
+  "stages": [
+    {
+      "kind": "idle_trigger",
+      "title": "Idle window begins",
+      "summary": "The user pauses to inspect field flow; ProAct stays read-only and prepares context.",
+      "durationMs": 5000
+    },
+    {
+      "kind": "predict_need",
+      "title": "Predict handoff artifact",
+      "summary": "The system predicts that a handoff card will be more useful than another long procedural answer.",
+      "durationMs": 8000
+    },
+    {
+      "kind": "gather_evidence",
+      "title": "Gather read-only evidence",
+      "summary": "Only synthetic fact-sheet entries are selected for bin fullness, label placement, AgriTrace scanning, intake, and quarantine exceptions.",
+      "durationMs": 9000
+    },
+    {
+      "kind": "compose_artifact",
+      "title": "Prepare handoff card and table",
+      "summary": "Evidence is organized into a harvest traceability handoff card plus a compact exception table.",
+      "durationMs": 10000
+    },
+    {
+      "kind": "deliver_decision",
+      "title": "Push delivery",
+      "summary": "Because this is a read-only internal draft, the prepared artifact is pushed for user control.",
+      "durationMs": 8500
+    }
+  ],
+  "selectedFacts": [
+    {
+      "factId": "HAR-F01",
+      "sourceType": "fact_sheet",
+      "sourceFactIds": [
+        "F06",
+        "F09",
+        "F10"
+      ],
+      "sourceCategories": [
+        "field_picking_protocol"
+      ],
+      "label": "full bin rule",
+      "displayText": "A standard yellow macro bin is considered full when peaches are level with the top rim, about 250 lb, and must move to block-end staging within 15 minutes.",
+      "relevance": "Supports the full bin row and field handoff timing."
+    },
+    {
+      "factId": "HAR-F02",
+      "sourceType": "fact_sheet",
+      "sourceFactIds": [
+        "F11",
+        "F12",
+        "F14"
+      ],
+      "sourceCategories": [
+        "bin_labeling_protocol"
+      ],
+      "label": "label ownership",
+      "displayText": "The crew lead generates the QR traceability label immediately after a bin is full; the ID format is VV-YYMMDD-BLOCK-BIN# and the label goes on the north-facing side, 5 inches from the top-right corner.",
+      "relevance": "Supports the label row and placement details."
+    },
+    {
+      "factId": "HAR-F03",
+      "sourceType": "fact_sheet",
+      "sourceFactIds": [
+        "F13",
+        "F15"
+      ],
+      "sourceCategories": [
+        "traceability_system"
+      ],
+      "label": "AgriTrace Pro scan",
+      "displayText": "Labels are generated in AgriTrace Pro, and a QR scan reveals block of origin, crop, crew lead, and exact labeling timestamp.",
+      "relevance": "Supports scan evidence without updating the system."
+    },
+    {
+      "factId": "HAR-F04",
+      "sourceType": "fact_sheet",
+      "sourceFactIds": [
+        "F04",
+        "F16",
+        "F19"
+      ],
+      "sourceCategories": [
+        "wash_station_intake"
+      ],
+      "label": "Wash Station A intake",
+      "displayText": "Sofia Rossi manages Wash Station A and must scan each bin QR code before tipping it into the hydro-cooler; successful intake scan logs Washed status.",
+      "relevance": "Supports the wash station row."
+    },
+    {
+      "factId": "HAR-F05",
+      "sourceType": "fact_sheet",
+      "sourceFactIds": [
+        "F18",
+        "F27"
+      ],
+      "sourceCategories": [
+        "wash_station_intake",
+        "communication"
+      ],
+      "label": "Traceability Hold",
+      "displayText": "Any bin without a scannable label moves immediately to Quarantine Bay Q2 and is flagged for Traceability Hold.",
+      "relevance": "Supports exception handling and safety boundary."
+    },
+    {
+      "factId": "HAR-F06",
+      "sourceType": "fact_sheet",
+      "sourceFactIds": [
+        "F24",
+        "F25"
+      ],
+      "sourceCategories": [
+        "quality_control"
+      ],
+      "label": "delay and correction",
+      "displayText": "AgriTrace Pro alerts if field scan to wash station scan exceeds 90 minutes; mislabeled bins require an incident report and correct re-labeling within 10 minutes.",
+      "relevance": "Supports timing and correction rows."
+    },
+    {
+      "factId": "HAR-F07",
+      "sourceType": "fact_sheet",
+      "sourceFactIds": [
+        "F21",
+        "F22"
+      ],
+      "sourceCategories": [
+        "shipment_prep_protocol"
+      ],
+      "label": "pallet source links",
+      "displayText": "Packing creates pallet lots by scanning all source bin QR codes and using a final master QR code linking to source bin IDs.",
+      "relevance": "Supports downstream traceability without changing shipment status."
+    }
+  ],
+  "artifact": {
+    "title": "Harvest Traceability Handoff Card",
+    "sections": [
+      {
+        "heading": "Brief summary",
+        "items": [
+          {
+            "text": "Full bin: peaches level with top rim, about 250 lb, then move to block-end staging within 15 minutes.",
+            "evidenceRefs": [
+              "HAR-F01"
+            ]
+          },
+          {
+            "text": "Label: crew lead applies QR label immediately, north-facing side, 5 inches from top-right corner.",
+            "evidenceRefs": [
+              "HAR-F02"
+            ]
+          },
+          {
+            "text": "Scan: AgriTrace Pro scan carries block, crop, crew lead, and timestamp evidence.",
+            "evidenceRefs": [
+              "HAR-F03"
+            ]
+          },
+          {
+            "text": "Exception: unscannable labels go to Quarantine Bay Q2 for Traceability Hold.",
+            "evidenceRefs": [
+              "HAR-F05"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Prepared table",
+        "items": [
+          {
+            "text": "Full-bin rule, label placement, scan, Wash Station A intake, and exception handling are ready as handoff rows.",
+            "evidenceRefs": [
+              "HAR-F01",
+              "HAR-F02",
+              "HAR-F03",
+              "HAR-F04",
+              "HAR-F05"
+            ]
+          },
+          {
+            "text": "Updating AgriTrace or sending Slack notices still requires explicit human action.",
+            "uncertainty": "The artifact does not update AgriTrace, notify Slack, print labels, quarantine bins, or change shipment state."
+          }
+        ]
+      }
+    ]
+  },
+  "deliveryDecision": {
+    "action": "push",
+    "reason": "The artifact is an internal operations handoff card based on read-only evidence, with low interruption cost and no external side effect.",
+    "userConfirmationRequired": false,
+    "safeNextStep": "Show the handoff card and let the user open it, copy the table, or copy the card explicitly.",
+    "blockedActions": [
+      "No AgriTrace updates",
+      "No Slack notification",
+      "No shipment status changes",
+      "No quarantine action",
+      "No label printing"
+    ],
+    "userVisibleItems": [
+      "Harvest Traceability Handoff Card",
+      "Traceability exception table",
+      "Open brief / Copy table / Copy handoff card buttons"
+    ]
+  },
+  "safetyBoundary": {
+    "summary": "ProAct prepares a traceability handoff card from read-only harvest evidence and leaves every operational action under user control.",
+    "blockedActions": [
+      "No AgriTrace updates",
+      "No Slack notification",
+      "No shipment status changes",
+      "No quarantine action",
+      "No label printing"
+    ]
+  },
+  "redactionNotes": [
+    "Curated from a fictional farm-operations scenario and synthetic fact-sheet entries.",
+    "Private operational metadata, internal prompts, unfiltered transcripts, and live endpoints are omitted.",
+    "The demo does not update traceability systems, send notifications, print labels, or use real farm data."
+  ],
+  "videoMode": {
+    "version": 4,
+    "totalDurationMs": 66000,
+    "phases": [
+      {
+        "id": "title_card",
+        "label": "Title",
+        "startMs": 0,
+        "endMs": 3000,
+        "heading": "ProAct: prepares useful work during idle time",
+        "subtitle": "Farm Operations · Predict → Evidence → Artifact → Policy → Push"
+      },
+      {
+        "id": "conversation",
+        "label": "Ask",
+        "startMs": 3000,
+        "endMs": 15700,
+        "messages": [
+          {
+            "role": "user",
+            "text": "I need the field picking to bin labeling to Wash Station A intake handoff to stay traceable. Can you keep the steps straight?",
+            "typingDelayMs": 0,
+            "displayDurationMs": 3600
+          },
+          {
+            "role": "assistant",
+            "text": "Yes. The key chain is full-bin rule, crew lead QR label, AgriTrace Pro scan, Wash Station A intake, and Quarantine Bay Q2 if the label fails.",
+            "typingDelayMs": 900,
+            "displayDurationMs": 3200
+          },
+          {
+            "role": "user",
+            "text": "I'll check the crew flow. If a handoff card would help, prepare it while I look.",
+            "typingDelayMs": 0,
+            "displayDurationMs": 3200,
+            "isIdleTrigger": true
+          }
+        ]
+      },
+      {
+        "id": "idle_transition",
+        "label": "Idle",
+        "startMs": 15700,
+        "endMs": 20200,
+        "idleLabel": "User reviewing harvest flow",
+        "idleDuration": "20",
+        "clockAcceleration": 4
+      },
+      {
+        "id": "predict",
+        "label": "Predict",
+        "startMs": 20200,
+        "endMs": 27700,
+        "inspectorLabel": "Predict next need",
+        "prediction": {
+          "title": "Next need: traceability handoff card",
+          "summary": "The user is coordinating a fast field-to-wash handoff. A card plus exception table is likely more useful than another chat answer."
+        },
+        "candidates": [
+          {
+            "title": "Harvest Traceability Handoff Card",
+            "confidence": "High",
+            "selected": true
+          },
+          {
+            "title": "Raw protocol list",
+            "confidence": "Medium"
+          },
+          {
+            "title": "Update AgriTrace records",
+            "confidence": "Blocked"
+          }
+        ],
+        "badges": [
+          "low risk",
+          "low interruption",
+          "read-only evidence"
+        ]
+      },
+      {
+        "id": "explore",
+        "label": "Evidence",
+        "startMs": 27700,
+        "endMs": 35200,
+        "inspectorLabel": "Gather read-only evidence",
+        "safetyNote": "Read-only evidence · no AgriTrace updates, no Slack messages, no shipment changes",
+        "facts": [
+          {
+            "factId": "HAR-01",
+            "label": "250-lb full bin rule"
+          },
+          {
+            "factId": "HAR-02",
+            "label": "Block-end staging"
+          },
+          {
+            "factId": "HAR-03",
+            "label": "North-facing label"
+          },
+          {
+            "factId": "HAR-04",
+            "label": "AgriTrace Pro scan"
+          },
+          {
+            "factId": "HAR-05",
+            "label": "Wash Station A"
+          },
+          {
+            "factId": "HAR-06",
+            "label": "Quarantine Bay Q2"
+          },
+          {
+            "factId": "HAR-07",
+            "label": "90-minute delay alert"
+          }
+        ]
+      },
+      {
+        "id": "artifact",
+        "label": "Brief",
+        "startMs": 35200,
+        "endMs": 43200,
+        "artifactTitle": "Harvest Traceability Handoff Card",
+        "artifactFooter": "Handoff card prepared from read-only harvest evidence",
+        "artifactClass": "wide",
+        "summaryRows": [
+          {
+            "label": "Full bin",
+            "value": "Peaches level with top rim · about 250 lb",
+            "ref": "HAR-01"
+          },
+          {
+            "label": "Move",
+            "value": "Block-end staging within 15 minutes",
+            "ref": "HAR-02"
+          },
+          {
+            "label": "Label",
+            "value": "Crew lead applies QR label north-facing, 5 inches from corner",
+            "ref": "HAR-03"
+          },
+          {
+            "label": "Scan",
+            "value": "AgriTrace Pro records block, crop, crew lead, timestamp",
+            "ref": "HAR-04"
+          },
+          {
+            "label": "Exception",
+            "value": "No scannable label → Quarantine Bay Q2",
+            "ref": "HAR-06"
+          }
+        ]
+      },
+      {
+        "id": "artifact_table",
+        "label": "Table",
+        "startMs": 43200,
+        "endMs": 50700,
+        "artifactTitle": "Harvest Traceability Handoff Card",
+        "artifactFooter": "Traceability table · ready for user review",
+        "artifactClass": "wide",
+        "summaryRows": [
+          {
+            "label": "Full bin",
+            "value": "250-lb rule",
+            "ref": "HAR-01"
+          },
+          {
+            "label": "Scan",
+            "value": "AgriTrace Pro before wash intake",
+            "ref": "HAR-04"
+          },
+          {
+            "label": "Exception",
+            "value": "Quarantine Bay Q2 for unscannable label",
+            "ref": "HAR-06"
+          }
+        ],
+        "tableRows": [
+          {
+            "area": "Full bin",
+            "finding": "Bin is full when peaches are level with the top rim, about 250 lb.",
+            "nextStep": "Move to block-end staging within 15 minutes."
+          },
+          {
+            "area": "Label",
+            "finding": "Crew lead prints and applies the QR label immediately after full-bin confirmation.",
+            "nextStep": "Use north-facing side, 5 inches from top-right corner."
+          },
+          {
+            "area": "Scan",
+            "finding": "AgriTrace Pro scan links block, crop, crew lead, and timestamp.",
+            "nextStep": "Verify scan before handoff."
+          },
+          {
+            "area": "Wash station",
+            "finding": "Sofia Rossi scans each bin at Wash Station A before hydro-cooler intake.",
+            "nextStep": "Confirm intake scan before tipping."
+          },
+          {
+            "area": "Exception",
+            "finding": "Unscannable labels go to Quarantine Bay Q2 for Traceability Hold.",
+            "nextStep": "Handle manually; do not auto-update."
+          }
+        ]
+      },
+      {
+        "id": "delivery",
+        "label": "Policy",
+        "startMs": 50700,
+        "endMs": 55700,
+        "deliveryTitle": "Delivery Decision",
+        "artifactClass": "policy",
+        "statusLine": "Delivering prepared handoff card to user workspace...",
+        "options": [
+          {
+            "mode": "Push now",
+            "status": "✓",
+            "statusLabel": "Selected",
+            "reason": "Useful internal draft, low risk, low interruption.",
+            "class": "selected"
+          },
+          {
+            "mode": "Queue",
+            "status": "○",
+            "statusLabel": "Available",
+            "reason": "Could wait, but user explicitly invited preparation.",
+            "class": "queue"
+          },
+          {
+            "mode": "Store",
+            "status": "○",
+            "statusLabel": "Fallback",
+            "reason": "Keep evidence available, but the card is ready now.",
+            "class": "stored"
+          }
+        ],
+        "summaryLines": [
+          "Utility 0.82 >= threshold · Interruption cost: Low",
+          "User explicitly invited preparation → safe to push",
+          "No writes to AgriTrace, Slack, quarantine, label, or shipment systems."
+        ]
+      },
+      {
+        "id": "push_handoff",
+        "label": "Push",
+        "startMs": 55700,
+        "endMs": 59000,
+        "notification": {
+          "title": "ProAct prepared a harvest handoff card while you were away.",
+          "body": "Found bin, label, scan, wash station, and hold evidence from read-only sources.",
+          "meta": "Prepared from read-only evidence.",
+          "safety": "User controls next action.",
+          "actions": [
+            {
+              "label": "Open brief",
+              "style": "primary"
+            },
+            {
+              "label": "Copy table",
+              "style": "secondary"
+            },
+            {
+              "label": "Dismiss",
+              "style": "secondary"
+            }
+          ]
+        }
+      },
+      {
+        "id": "push_delivered",
+        "label": "Delivered",
+        "startMs": 59000,
+        "endMs": 66000,
+        "artifactTitle": "Harvest Traceability Handoff Card",
+        "artifactSubtitle": "Prepared during idle time from read-only evidence.",
+        "artifactFooter": "User controls next action · No writes were performed.",
+        "artifactClass": "wide delivered",
+        "notification": {
+          "title": "ProAct prepared a harvest handoff card while you were away.",
+          "body": "Found bin, label, scan, wash station, and hold evidence from read-only sources.",
+          "meta": "Prepared from read-only evidence.",
+          "safety": "User controls next action.",
+          "actions": [
+            {
+              "label": "Open brief",
+              "style": "primary"
+            },
+            {
+              "label": "Copy table",
+              "style": "secondary"
+            },
+            {
+              "label": "Dismiss",
+              "style": "secondary"
+            }
+          ]
+        },
+        "summaryRows": [
+          {
+            "label": "Full bin",
+            "value": "250-lb rule",
+            "ref": "HAR-01"
+          },
+          {
+            "label": "Scan",
+            "value": "AgriTrace Pro Scan at Wash station",
+            "ref": "HAR-04"
+          },
+          {
+            "label": "Exception",
+            "value": "Quarantine Bay Q2",
+            "ref": "HAR-06"
+          }
+        ],
+        "tableRows": [
+          {
+            "area": "Full bin",
+            "finding": "Peaches level with rim means bin is full.",
+            "nextStep": "Stage within 15 minutes."
+          },
+          {
+            "area": "Label",
+            "finding": "Crew lead applies QR label before movement continues.",
+            "nextStep": "Check north-facing placement."
+          },
+          {
+            "area": "Exception",
+            "finding": "Unscannable label goes to Quarantine Bay Q2.",
+            "nextStep": "Handle manually."
+          }
+        ],
+        "cta": [
+          {
+            "label": "Open brief",
+            "style": "primary"
+          },
+          {
+            "label": "Copy table",
+            "style": "secondary"
+          },
+          {
+            "label": "Copy handoff card",
+            "style": "secondary"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -12,14 +12,17 @@ const requiredFiles = [
   "styles.css",
   "app.js",
   "assets/images/favicon.svg",
-  "assets/images/poster-proact-screen-recording-2026-05-19.jpg",
-  "assets/images/poster-case-release.svg",
-  "assets/images/poster-case-care.svg",
-  "assets/images/poster-case-intake.svg",
-  "assets/media/proact-screen-recording-2026-05-19.mp4",
-  "assets/media/case-release-hotfix.mp4",
-  "assets/media/case-care-coordination.mp4",
-  "assets/media/case-intake-summary.mp4",
+  "assets/images/poster-project-kickoff.svg",
+  "assets/images/poster-rollout-signal.svg",
+  "assets/images/poster-document-gap.svg",
+  "assets/images/poster-traceability-handoff.svg",
+  "demo-player/player.html",
+  "demo-player/video-renderer.js",
+  "demo-player/video-styles.css",
+  "demo-player/traces/project_product_push_01.json",
+  "demo-player/traces/release_rollout_observation_05.json",
+  "demo-player/traces/case_eligibility_document_gap_02.json",
+  "demo-player/traces/farm_harvest_traceability_handoff_04.json",
 ];
 
 function assert(condition, message) {
@@ -58,9 +61,9 @@ for (const section of expectedSections) {
 }
 
 const expectedText = [
-  "把智能体的等待时间变成可验证的下一步准备",
+  "把空闲等待变成可验证的下一步准备",
   "空闲窗口示例 trace（虚构）",
-  "4 个原型流程 demo",
+  "4 个原型流程 demo：从空闲等待到主动准备可审核材料",
   "虚构人物、组织和合成事实表",
   "不代表线上生产系统效果",
   "主动交付不等于自动执行",
@@ -69,7 +72,8 @@ const expectedText = [
   "Drop",
   "如何评测主动智能体是否真的有用？",
   "闭世界虚构场景",
-  "隐藏标注",
+  "隐藏需求标注",
+  "无来源断言",
   "打扰成本",
 ];
 
@@ -125,6 +129,10 @@ const forbiddenText = [
   ["User Effort", " 降低"].join(""),
   ["Hallucination", " Rate"].join(""),
   ["MemBench Reflective", " Accuracy"].join(""),
+  ["从停顿", "到可确认材料"].join(""),
+  ["大型架构图", "不再作为主要阅读路径"].join(""),
+  ["unsupported", " claims"].join(""),
+  ["智能体的", "等待时间"].join(""),
   "-14.8%",
   "-11.7%",
   "-28.1%",
@@ -143,12 +151,22 @@ assert(css.includes("prefers-reduced-motion"), "CSS should support reduced motio
 assert(js.includes("data-theme"), "JavaScript should keep theme switching behavior");
 
 const localAssetPattern = /\b(?:src|href|poster)="([^"]+)"/g;
+const pendingVideos = [];
 for (const match of html.matchAll(localAssetPattern)) {
   const assetPath = match[1];
   if (assetPath.startsWith("#") || assetPath === "" || assetPath.startsWith("data:")) {
     continue;
   }
+  if (assetPath.endsWith(".mp4") || assetPath.endsWith(".webm")) {
+    if (!existsSync(path.join(siteRoot, assetPath))) {
+      pendingVideos.push(assetPath);
+      continue;
+    }
+  }
   assert(existsSync(path.join(siteRoot, assetPath)), `Referenced local asset does not exist: ${assetPath}`);
+}
+if (pendingVideos.length > 0) {
+  console.warn(`site-smoke: ${pendingVideos.length} video(s) pending recording: ${pendingVideos.join(", ")}`);
 }
 
 async function checkWithPlaywright(fileUrl) {

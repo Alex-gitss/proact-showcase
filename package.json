@@ -1,0 +1,24 @@
+{
+  "name": "merged-proact-showcase",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alex-gitss/proact-showcase.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Alex-gitss/proact-showcase/issues"
+  },
+  "homepage": "https://github.com/Alex-gitss/proact-showcase#readme",
+  "devDependencies": {
+    "playwright": "^1.60.0"
+  }
+}
