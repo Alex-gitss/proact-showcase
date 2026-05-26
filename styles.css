@@ -95,9 +95,18 @@ button {
 
 .site-logo {
   flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
   font-size: 22px;
   font-weight: 900;
   line-height: 1;
+}
+
+.site-logo__icon {
+  height: 32px;
+  width: 32px;
+  border-radius: 6px;
 }
 
 .site-nav {
